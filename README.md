@@ -1,6 +1,6 @@
-# commerce_mobile_app
+# Flutter Commerce Mobile Application
 
-A new Flutter project.
+A new Flutter project!
 
 ## Getting Started
 
