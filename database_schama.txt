@@ -1,0 +1,36 @@
+#Note: if something has a shared name, then they are meant to be shared between both collections
+#For example, MyCard and Product both having 'ProductID' means that the data between them can 
+#be joined together and used together.
+#Basically, in the same manner as a SQL JOIN operation
+
+#This seems to be the data for the product with all of its information included
+Category:
+    -CategoryID: int
+    -Title: string
+    -IconPath: string
+
+#This seems to be the data for the product with everything included
+Product:
+    -ProductID: int
+    -Name: string
+    -Description: string
+    -BasePrice: int
+    -DiscountPercentage: double
+    -IsOnSale: boolean
+    # The next three entries will have its data randomly generated for simplicity
+    -ReviewsNumber: int
+    -StarsRating: double #Next to the star icon 
+    -LikesRating: double #Next to the thumb icon 
+
+    -Colors: array<RGBA_COLOR> # R, G, B, and A will be stored seperately   
+
+    -Specifications: object<string, string>
+
+Favorite:
+    -ProductID: int
+    -IsFavorite: boolean
+
+#This seems to be the product "Card" that we see
+MyCard:
+    -ProductID: int
+    -ThumbnailPath: string
