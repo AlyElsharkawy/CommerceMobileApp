@@ -5,32 +5,34 @@
 
 #This seems to be the data for the product with all of its information included
 Category:
-    -CategoryID: int
+    -CategoryID: string
     -Title: string
     -IconPath: string
 
 #This seems to be the data for the product with everything included
 Product:
-    -ProductID: int
+    -ProductID: string
     -Name: string
     -Description: string
     -BasePrice: int
     -DiscountPercentage: double
     -IsOnSale: boolean
+    
     # The next three entries will have its data randomly generated for simplicity
     -ReviewsNumber: int
     -StarsRating: double #Next to the star icon 
     -LikesRating: double #Next to the thumb icon 
 
+    -PhotoPath: String
     -Colors: array<RGBA_COLOR> # R, G, B, and A will be stored seperately   
 
     -Specifications: object<string, string>
 
 Favorite:
-    -ProductID: int
+    -ProductID: string
     -IsFavorite: boolean
 
 #This seems to be the product "Card" that we see
 MyCard:
-    -ProductID: int
+    -ProductID: string
     -ThumbnailPath: string

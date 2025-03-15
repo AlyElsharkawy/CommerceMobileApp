@@ -1,14 +1,17 @@
+import 'package:commerce_mobile_app/database_wrapper.dart';
 import 'package:commerce_mobile_app/screens/home_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  insertDummyData();
+  print(getAllProductsData());
   runApp(const MyApp());
 }
 
