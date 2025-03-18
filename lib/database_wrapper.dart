@@ -98,7 +98,6 @@ Future<List<Map<String, dynamic>>> getAllProductsData() async {
   List<Map<String, dynamic>> results = [];
   QuerySnapshot qs = await firestore.collection("Product").get();
   if (qs.docs.isEmpty) {
-    print("Error: empty docs");
     return [];
   }
   for (var product in qs.docs) {
@@ -112,7 +111,8 @@ Future<List<Map<String, dynamic>>> getAllProductsData() async {
   int currIdx = 0;
 
   for (var favorite in fav.docs) {
-    results[currIdx]["IsFavorite"] = favorite.data() as bool;
+    final temp = favorite.data() as Map<String, dynamic>;
+    results[currIdx]["IsFavorite"] = temp["IsFavorite"];
     currIdx++;
   }
   return results;
