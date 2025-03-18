@@ -98,6 +98,7 @@ Future<List<Map<String, dynamic>>> getAllProductsData() async {
   List<Map<String, dynamic>> results = [];
   QuerySnapshot qs = await firestore.collection("Product").get();
   if (qs.docs.isEmpty) {
+    print("Error: empty docs");
     return [];
   }
   for (var product in qs.docs) {
@@ -158,8 +159,8 @@ void insertDummyData() {
       0.0,
       false,
       true,
-      "assets/products/1.png",
-      "assets/products/1.png", {});
+      "assets/products/Sneaker.png",
+      "assets/products/Sneaker.png", {});
   addProduct(
       2,
       "Fitbit Smartwatch",
@@ -168,8 +169,8 @@ void insertDummyData() {
       0.1,
       true,
       true,
-      "assets/products/1.png",
-      "assets/products/1.png",
+      "assets/products/smartwatch.png",
+      "assets/products/smartwatch.png",
       {"Battery Life": "At least 2 days", "Model": "Fitbit X20 Pro"});
   addProduct(
       3,
@@ -179,8 +180,8 @@ void insertDummyData() {
       0.0,
       false,
       true,
-      "assets/products/3.png",
-      "assets/products/3.png", {
+      "assets/products/phone.png",
+      "assets/products/phone.png", {
     "Battery Life": "Not less than 72 hours",
     "Camera": "200 Megapixel",
     "Model": "Expellion X500 Pro"
@@ -193,8 +194,8 @@ void insertDummyData() {
       0.0,
       false,
       false,
-      "assets/products/4.png",
-      "assets/products/4.png", {
+      "assets/products/headphone.png",
+      "assets/products/headphone.png", {
     "Model": "ProLife SoundsBuds 2000",
     "Range": "20Hz to 20KHz",
     "Battery Life": "Atleast 10 hours"
@@ -207,8 +208,8 @@ void insertDummyData() {
       0.1,
       true,
       true,
-      "assets/products/1.png",
-      "assets/products/1.png", {});
+      "assets/products/Sneaker.png",
+      "assets/products/Sneaker.png", {});
   addProduct(
       6,
       "Fitbit Deluxe Smartwatch",
@@ -217,8 +218,8 @@ void insertDummyData() {
       0.0,
       false,
       false,
-      "assets/products/1.png",
-      "assets/products/1.png",
+      "assets/products/smartwatch.png",
+      "assets/products/smartwatch.png",
       {"Battery Life": "At least 2 days", "Model": "Fitbit X20 Ultra Pro"});
   addProduct(
       7,
@@ -228,8 +229,8 @@ void insertDummyData() {
       0.0,
       false,
       true,
-      "assets/products/4.png",
-      "assets/products/4.png",
+      "assets/products/headphone.png",
+      "assets/products/headphone.png",
       {"Model": "ProLife SoundsBuds 1000", "Range": "20Hz to 20KHz"});
   addCategory(1, "Food", "assets/icons/vector.png");
   addCategory(2, "Gifts", "assets/icons/Vector (1).png");

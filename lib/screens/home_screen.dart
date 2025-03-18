@@ -1,6 +1,11 @@
+import 'package:commerce_mobile_app/screens/headphone_screen.dart';
+import 'package:commerce_mobile_app/screens/smartphone_screen.dart';
+import 'package:commerce_mobile_app/screens/smartwatch_screen.dart';
+import 'package:commerce_mobile_app/screens/sneaker_screen.dart';
 import 'package:commerce_mobile_app/widgets/column1.dart';
 import 'package:commerce_mobile_app/widgets/product.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ionicons/ionicons.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -11,8 +16,9 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xfffbfbfb),
-        leading: IconButton(
-            onPressed: () {}, icon: Icon(Icons.ac_unit_rounded, size: 35)),
+        leading:
+        IconButton(
+            onPressed: () {}, icon: Icon(FontAwesomeIcons.gem),),
         title: Text(
           "Wizo",
           style: TextStyle(fontSize: 20),
@@ -29,33 +35,40 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       //backgroundColor: Color(0xfff5f5f5),
-      bottomNavigationBar: ClipRRect(
-        borderRadius: BorderRadius.only(
-            topRight: Radius.circular(35), topLeft: Radius.circular(35)),
-        child: BottomNavigationBar(
-            backgroundColor: Colors.white,
-            type: BottomNavigationBarType.fixed,
-            items: [
-              BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.home_filled,
-                    size: 30,
-                  ),
-                  label: ""),
-              BottomNavigationBarItem(
-                  icon: Icon(
-                    Ionicons.heart,
-                    size: 30,
-                  ),
-                  label: ""),
-              BottomNavigationBarItem(
-                  icon: Icon(
-                    Ionicons.basket,
-                    size: 30,
-                  ),
-                  label: ""),
-            ]),
-      ),
+      bottomNavigationBar:  Container(
+        height: 70,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(30),
+            topRight: Radius.circular(30),
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black26,
+              blurRadius: 10,
+              spreadRadius: 2,
+            ),
+          ],
+        ),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.home_filled, size: 25, color: Colors.black),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Ionicons.heart, size: 25, color: Colors.black),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Ionicons.basket, size: 25, color: Colors.black),
+            ),
+          ],
+        ),),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: ListView(
@@ -172,7 +185,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  bottom: 50,
+                  bottom: 20,
                   left: 20,
                   child: Column(
                     children: [
@@ -216,10 +229,71 @@ class HomeScreen extends StatelessWidget {
               children: [
                 Expanded(
                     child: Product(
+                      path: "assets/products/1.png",
+                      name: "Sneaker",
+                      price: "\$100",
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => SneakerScreen(),));
+                      },
+                    )),
+                SizedBox(
+                  width: 20,
+                ),
+                Expanded(
+                    child: Product(
+                      path: "assets/products/2.png",
+                      name: "Fitbit Smartwatch",
+                      price: "\$100",
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) =>SmartwatchScreen(),));
+                      },
+                    )),
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                    child: Product(
+                      path: "assets/products/3.png",
+                      name: "Smartphone",
+                      price: "\$100",
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) =>SmartphoneScreen(),));
+                      },
+                    )),
+                SizedBox(
+                  width: 20,
+                ),
+                Expanded(
+                    child: Product(
+                      path: "assets/products/4.png",
+                      name: "Headphone",
+                      price: "\$100",
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) =>HeadphoneScreen(),));
+
+                      },
+                    )),
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                    child: Product(
                   path: "assets/products/1.png",
                   name: "Sneaker",
                   price: "\$100",
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => SneakerScreen(),));
+                  },
                 )),
                 SizedBox(
                   width: 20,
@@ -242,7 +316,7 @@ class HomeScreen extends StatelessWidget {
                 Expanded(
                     child: Product(
                   path: "assets/products/3.png",
-                  name: "Sneaker",
+                  name: "Smartphone",
                   price: "\$100",
                   onTap: () {},
                 )),
@@ -252,57 +326,7 @@ class HomeScreen extends StatelessWidget {
                 Expanded(
                     child: Product(
                   path: "assets/products/4.png",
-                  name: "Fitbit Smartwatch",
-                  price: "\$100",
-                  onTap: () {},
-                )),
-              ],
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                    child: Product(
-                  path: "assets/products/1.png",
-                  name: "Sneaker",
-                  price: "\$100",
-                  onTap: () {},
-                )),
-                SizedBox(
-                  width: 20,
-                ),
-                Expanded(
-                    child: Product(
-                  path: "assets/products/2.png",
-                  name: "Fitbit Smartwatch",
-                  price: "\$100",
-                  onTap: () {},
-                )),
-              ],
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                    child: Product(
-                  path: "assets/products/3.png",
-                  name: "Sneaker",
-                  price: "\$100",
-                  onTap: () {},
-                )),
-                SizedBox(
-                  width: 20,
-                ),
-                Expanded(
-                    child: Product(
-                  path: "assets/products/4.png",
-                  name: "Fitbit Smartwatch",
+                  name: "Headphone",
                   price: "\$100",
                   onTap: () {},
                 )),
