@@ -4,16 +4,16 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
-import 'package:logger/logger.dart';
+//import 'package:logger/logger.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  //insertDummyData();
-  final Logger lg = Logger();
-  lg.i(await getAllProductsData());
+  if (await checkCollectionExists("Product") == false) insertDummyData();
+  //final Logger lg = Logger();
+  //lg.i(await getAllProductsData());
   runApp(const MyApp());
 }
 

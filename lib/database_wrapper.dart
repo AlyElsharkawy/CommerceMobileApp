@@ -248,3 +248,10 @@ void insertDummyData() {
   addCategory(4, "Gadgets", "assets/icons/Vector (3).png");
   addCategory(5, "Accessories", "assets/icons/Vector (4).png");
 }
+
+Future<bool> checkCollectionExists(String inputName) async {
+  CollectionReference collectionRef =
+      FirebaseFirestore.instance.collection(inputName);
+  QuerySnapshot snapshot = await collectionRef.limit(1).get();
+  return snapshot.docs.isNotEmpty;
+}

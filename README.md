@@ -1,16 +1,37 @@
 # Flutter Commerce Mobile Application
 
-A new Flutter project!
+This is a simple ecommerce mobile application that stores and retrieves product information from the firebase firestore NoSQL database. Furthermore, it also keeps track of which products are on sale or have been favorited.
 
-## Getting Started
+## Firebase Integration and Installation
+This project uses firestore to store data about products to be displayed. In order to do this, you will need to download the `flutter_fire` package and `firebase` CLI. Please refer to the below documentation
 
-This project is a starting point for a Flutter application.
+-[Firebase CLI](https://firebase.google.com/docs/cli#setup_update_cli)
 
-A few resources to get you started if this is your first Flutter project:
+-[flutter_fire](https://firebase.google.com/docs/flutter/setup?platform=ios)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Afterwards, clone this repostiory and navigate to it to prepare for integration with firebase.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```bash
+git clone https://github.com/AlyElsharkawy/CommerceMobileApp
+cd ./CommerceMobileApp
+```
+Note: The path seperator on Linux and Mac is the '/' character and on Windows its the '\' character. Adapt the above section to the operating system you are using.
+
+Then, login to firebase with the below command
+
+`firebase login`
+
+Afterwards, you will then run the below command to configure the project with firebase. Also, make sure that you _atleast_ select android as a supported app. Please make sure that you are in the directory in which the cloned repository was downloaded to.
+
+`flutterfire configure`
+
+After this step, you are done. The only two remaining steps are running the android emulator and building and running the project. Assuming you created your emulator using visual studio code, then running it should be as follows
+
+```bash
+# Run this in its own terminal pane
+emulator -avd flutter_emulat
+flutter run
+```
+
+Do not worry about the dummy data of the project. It will be created automatically!
+
