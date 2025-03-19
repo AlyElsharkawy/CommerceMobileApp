@@ -12,8 +12,8 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   //insertDummyData();
-  //final Logger lg = Logger();
-  //lg.i(await getAllProductsData());
+  final Logger lg = Logger();
+  lg.i(await getAllProductsData());
   runApp(const MyApp());
 }
 

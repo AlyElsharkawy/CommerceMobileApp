@@ -232,6 +232,16 @@ void insertDummyData() {
       "assets/products/headphone.png",
       "assets/products/headphone.png",
       {"Model": "ProLife SoundsBuds 1000", "Range": "20Hz to 20KHz"});
+  addProduct(
+      8,
+      "Iphone 1",
+      "This is the original smartphone that started it all",
+      999.99,
+      0.0,
+      false,
+      true,
+      "assets/products/phone.png",
+      "assets/products/phone.png", {});
   addCategory(1, "Food", "assets/icons/vector.png");
   addCategory(2, "Gifts", "assets/icons/Vector (1).png");
   addCategory(3, "Fashion", "assets/icons/Vector (2).png");

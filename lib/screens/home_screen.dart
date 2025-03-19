@@ -1,12 +1,10 @@
-import 'package:commerce_mobile_app/screens/headphone_screen.dart';
-import 'package:commerce_mobile_app/screens/smartphone_screen.dart';
-import 'package:commerce_mobile_app/screens/smartwatch_screen.dart';
-import 'package:commerce_mobile_app/screens/sneaker_screen.dart';
+import 'package:commerce_mobile_app/database_wrapper.dart';
 import 'package:commerce_mobile_app/widgets/column1.dart';
 import 'package:commerce_mobile_app/widgets/product.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:commerce_mobile_app/screens/generic_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -16,9 +14,10 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xfffbfbfb),
-        leading:
-        IconButton(
-            onPressed: () {}, icon: Icon(FontAwesomeIcons.gem),),
+        leading: IconButton(
+          onPressed: () {},
+          icon: Icon(FontAwesomeIcons.gem),
+        ),
         title: Text(
           "Wizo",
           style: TextStyle(fontSize: 20),
@@ -35,7 +34,7 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       //backgroundColor: Color(0xfff5f5f5),
-      bottomNavigationBar:  Container(
+      bottomNavigationBar: Container(
         height: 70,
         decoration: BoxDecoration(
           color: Colors.white,
@@ -57,7 +56,8 @@ class HomeScreen extends StatelessWidget {
           children: [
             IconButton(
               onPressed: () {},
-              icon: const Icon(Icons.home_filled, size: 25, color: Colors.black),
+              icon:
+                  const Icon(Icons.home_filled, size: 25, color: Colors.black),
             ),
             IconButton(
               onPressed: () {},
@@ -68,7 +68,8 @@ class HomeScreen extends StatelessWidget {
               icon: const Icon(Ionicons.basket, size: 25, color: Colors.black),
             ),
           ],
-        ),),
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: ListView(
@@ -224,7 +225,65 @@ class HomeScreen extends StatelessWidget {
                     ))
               ],
             ),
-            Row(
+            FutureBuilder(
+              future: getAllProductsData(),
+              builder: (_, snap) {
+                final int offset = (snap.data?.length ?? 0) ~/ 2;
+                return Container(
+                  height: 400,
+                  child: ListView.builder(
+                    itemCount: (snap.data?.length ?? 0) ~/ 2,
+                    itemBuilder: (_, idx) => Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                                child: Product(
+                              path: snap.data?[idx]["PhotoPath"],
+                              name: snap.data?[idx]["Name"],
+                              price: "\$ ${snap.data?[idx]["BasePrice"]}",
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => GenericScreen(
+                                          productData: snap.data?[idx] ?? {}),
+                                    ));
+                              },
+                            )),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            Expanded(
+                                child: Product(
+                              path: snap.data?[offset + idx]["PhotoPath"],
+                              name: snap.data?[offset + idx]["Name"],
+                              price:
+                                  "\$ ${snap.data?[offset + idx]["BasePrice"]}",
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => GenericScreen(
+                                        productData:
+                                            snap.data?[offset + idx] ?? {},
+                                      ),
+                                    ));
+                              },
+                            )),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 10,
+                        )
+                      ],
+                    ),
+                  ),
+                );
+              },
+            )
+            /*Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Expanded(
@@ -331,7 +390,7 @@ class HomeScreen extends StatelessWidget {
                   onTap: () {},
                 )),
               ],
-            ),
+            ),*/
           ],
         ),
       ),
